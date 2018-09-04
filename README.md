@@ -1,27 +1,51 @@
-# Dip
+--------------------------------------------------------------------------------------------------------
+Dip - дипломная работа по курсу ND-12 "Node, AngularJS и MongoDB: разработка полноценных веб-приложений"
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+https://github.com/golikovalex/diploma
+--------------------------------------------------------------------------------------------------------
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+======================================
+Стек технологий
 
-## Code scaffolding
+ - Node js 8.9.3 + Express + Socket.io
+ - Angular 2+ (6.0.3) 
+ - MongoDB (3.1.1) + Mongojs
+======================================
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+Архитектура:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+	Система содержит 2 модуля: интерфейс клиента и интерфейс кухни (повара).
+	
+	1. КЛИЕНТ (client):
+		
+		компоненты (client-component - основной контейнер):
+			- account-info: данные об аккаунте клиента, его баланс и возможность пополнения 
+			- enterto: вход в аккаунт клиента, форма для заполнения имени и адреса почты
+			- menu-display: отображение заказов с их текущим состоянием и меню
+		
+		классы:
+			- account
+			- user
+			
+		сервисы:
+			- UserService: поиск пользователя в базе, добавление и обновление информации о нем
+			
+	
+	
+	2. КУХНЯ (kitchen):
+	
+		компоненты (kitchen-component - основной контейнер):
+			- my-orders: список текущих заказов
+			- is-cooking: список блюд в стадии "готовится"
+			
+	
+	
+	3. СЕРВИСЫ:	
+	
+		- SocketService: работа с Socket.io для обновления данных "на лету"
+		- MenuService: сервис по работе с базой данных заказов через REST
+			+ dish класс блюда из меню
+			+ order класс заказа
+			
